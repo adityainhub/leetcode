@@ -1,0 +1,14 @@
+| submissions | CREATE TABLE `submissions` (
+  `submission_id` bigint NOT NULL,
+  `question_id` int DEFAULT NULL,
+  `rank_position` int DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `question_number` int DEFAULT NULL,
+  `filename` varchar(255) DEFAULT NULL,
+  `language` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`submission_id`),
+  KEY `question_id` (`question_id`),
+  KEY `idx_submissions_username` (`username`),
+  KEY `idx_submissions_language` (`language`),
+  CONSTRAINT `submissions_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
