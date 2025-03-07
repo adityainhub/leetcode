@@ -47,8 +47,8 @@ class LcClient:
         self.contest_base = f"{self.api_base}/ranking/{contest}"
 
         Path(self.out_path).mkdir(exist_ok=True, parents=True)
-        self._driver_queue: queue.Queue = queue.Queue(4)
-        self.thread_pool = ThreadPoolExecutor(max_workers=4)
+        self._driver_queue: queue.Queue = queue.Queue(8)
+        self.thread_pool = ThreadPoolExecutor(max_workers=8)
         self.use_cache = use_cache
 
         # MySQL Connection Setup
@@ -192,7 +192,7 @@ class LcClient:
 
 def main():
     client = LcClient(sys.argv[1], int(sys.argv[2]))
-    client.fetch_submissions(range(100, 150))
+    client.fetch_submissions(range(1, 200))
     
 
 if __name__ == "__main__":
